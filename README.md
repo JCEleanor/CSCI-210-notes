@@ -68,7 +68,9 @@ Or redirect input to a program file and then redirect the output to a output fil
 - use > or 1 to redirect stdout
 - Use 2> to redirect stderr
 
-- /dev/null (a special dir)
+- /dev/null (a special dir) Usually when we pipe multiple commands, we want the error to log or ignore the error/output, we can redirect I/O to this dir.
 
 ### 0908
 - use `>>` instead of `>` to append to the end of an existing file
+- `ls | wc -l` where the pipe `|` is to connect mmultiple command. This piping mechanism put the output of the previous command to the following command
+- another example usage of I/O redirection: `cat *.txt > merge-text.txt`, which merge all the text files into a merged txt file. It's a stupid example, but definitely see some potential of automating some tasks.

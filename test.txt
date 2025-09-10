@@ -1,5 +1,5 @@
-Module1-Linux-and-shell-scripting
-README.md
-exam-sample-and-answer
-notes.pages
-test.txt
+[0827]
+Intro to linux
+what’s a operating system? it’s a program (or a collection of programs) the orchestrated/managed the softwares processes in our pc. what does it manage? cpu, memory, threads, processes (the main thing) etc…
+written in C
+
