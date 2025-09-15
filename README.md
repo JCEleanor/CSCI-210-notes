@@ -134,3 +134,7 @@ grep [-i|-c|-l|-n|-v|-o|-R] pattern file
 -o print only the matching parts on separate lines
 -R read the files in directories, recursively
 ```
+
+### 0915
+
+`grep -o -n -E ’(0|[1-9][0-9]*)([eE][+-]?[0-9]+)?’` -> why put a zero in front? for the base number for example: 016 is not 16 but 8 bit base number
