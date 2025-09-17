@@ -138,3 +138,50 @@ grep [-i|-c|-l|-n|-v|-o|-R] pattern file
 ### 0915
 
 `grep -o -n -E ’(0|[1-9][0-9]*)([eE][+-]?[0-9]+)?’` -> why put a zero in front? for the base number for example: 016 is not 16 but 8 bit base number
+
+### 0917
+
+- aliases are defined in .bash_profile
+- you can use `alias` command to see all the defined alias
+- bashrc is a ”run-command”, i.e., an rc file, which contains a list of bash
+  commands to be executed at every bash launch
+- in bash, an undefined variable is always an empty string ""
+- double colons and single colons are treated differently in bash script. For example "hello $A". If $A is defined, it will print out the value of $A, while in 'hello $A', will print out `$A`
+
+```
+-='cd -'
+...=../..
+....=../../..
+.....=../../../..
+......=../../../../..
+1='cd -1'
+2='cd -2'
+3='cd -3'
+4='cd -4'
+5='cd -5'
+6='cd -6'
+7='cd -7'
+8='cd -8'
+9='cd -9'
+_='sudo '
+egrep='grep -E'
+fgrep='grep -F'
+g=git
+gaa='git add --all'
+gl='git pull'
+glgg='git log --graph'
+```
+
+- l-value and r-value
+
+- env variables are accessible by the current shell session and child processes
+- by convention, variables are all caps in linux and bash
+- `bash` start a new process (new child process in a linux shell) (`exit` to exist child process)
+- sometimes some command we run (i,e., `matlab`) starts a child process, and after the command finishes, it quit the child process and return the result
+
+- `ps` to list all the process (like in Dockerfile)
+- shebang: `#!/bin/bash` ensures that your script is run with the Bash shell, regardless of which shell you are currently using in your terminal. This is important because different shells (like sh, zsh, ksh, etc.) can have different syntax and features, and a script written for Bash might not work correctly in another shell.
+- shebang is needed for portability and POSIX compliance
+- `. ./script.sh` execute script.sh. use the dot to execute the script
+- `source` execute a script
+- TODO: the diff btw `.` and `source`
