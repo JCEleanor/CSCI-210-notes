@@ -185,3 +185,43 @@ glgg='git log --graph'
 - `. ./script.sh` execute script.sh. use the dot to execute the script
 - `source` execute a script
 - TODO: the diff btw `.` and `source`
+
+### 0919
+
+- Three quoting mechanisms in Bash:
+  - Escape character
+  - Single quotes: 'text'
+  - Double quotes: "text"
+
+```bash
+  # command substitution
+  echo "`ls`"
+  echo "$(ls)"
+```
+
+```bash
+echo "Now running script $0"
+echo "First argument: $1"
+echo "Second argument: $2"
+
+# $$: The number of the command line args supplied to a script
+echo "$#"
+
+# see the current process ID
+echo "$$"
+```
+
+- `;` is a command seperator in bash script. For example, you can chain command with ;
+
+```bash
+if [$test]; then
+echo HAHA
+fi
+```
+
+- `test` command
+
+```bash
+[ -e README.md ] && echo "File exists" || echo "File does not exist"
+
+```
