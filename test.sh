@@ -17,3 +17,7 @@ echo "$#"
 echo "$$"
 
 [ -e README.md ] && echo "File exists" || echo "File does not exist"
+
+# bash can not deal with floating point arithmetic
+C=$(python3 -c "print(2.2+3.6)") // 5.800000000000001
+echo $C

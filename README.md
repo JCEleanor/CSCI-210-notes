@@ -225,3 +225,21 @@ fi
 [ -e README.md ] && echo "File exists" || echo "File does not exist"
 
 ```
+
+### 0922
+
+- `test`: test expression OR [ expression ]
+
+```bash
+#!/bin/bash
+if [ $1 -le 10 ]; then
+echo "Enter a number larger than 10"
+fi
+# OR
+#!/bin/bash
+if test $1 -le 10; then
+echo "Enter a number larger than 10"
+fi
+```
+
+- run script with `-x` flag to run debug mode or `set -x`
