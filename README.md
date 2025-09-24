@@ -243,3 +243,33 @@ fi
 ```
 
 - run script with `-x` flag to run debug mode or `set -x`
+
+### 0924
+
+#### inode table in linux
+
+- every directory is a table in the operating system, including the name of the files, and some metadata like permission, owner, creation date, and the links to the pysical adrress of where the file is in the hardware. i-node table
+
+```linux
+df -i -h /
+
+Filesystem        Size    Used   Avail Capacity iused ifree %iused  Mounted on
+/dev/disk3s1s1   460Gi    13Gi   226Gi     6%    404k  2.4G    0%   /
+
+```
+
+Also show inode number (uuid)
+
+- `ls -lahi`
+
+```
+265936 drwxr-xr-x+ 129 Eleanor  staff   4.0K Sep 24 09:35 .
+   23256 drwxr-xr-x    6 root     admin   192B May  2  2024 ..
+ 2124436 -r--------    1 Eleanor  staff     7B Aug 13  2021 .CFUserTextEncoding
+13044266 drwx------@   2 Eleanor  staff    64B Apr  7  2024 .DDLocalBackups
+13043805 drwx------@   2 Eleanor  staff    64B Apr  7  2024 .DDPreview
+  265997 -rw-r--r--@   1 Eleanor  staff    14K Sep 23 13:06 .DS_Store
+...
+```
+
+- `ls -lahid` list as directory
