@@ -184,7 +184,17 @@ glgg='git log --graph'
 - shebang is needed for portability and POSIX compliance
 - `. ./script.sh` execute script.sh. use the dot to execute the script
 - `source` execute a script
-- TODO: the diff btw `.` and `source`
+- diff btw `.` and `source`
+
+  1. Sourcing a Script (using source or .)
+     Execution Environment: When you source a script (e.g., source myscript.sh or . myscript.sh), the commands within that script are executed in the current shell environment.
+     Impact: Any changes made by the script, such as setting environment variables, changing the current working directory (cd), defining functions, or modifying shell options, will persist in the current shell after the script finishes.
+     Use Case: This is typically used for configuration files (like .bashrc or .profile), loading functions, or modifying the current shell's state.
+
+  2. Directly Running a Script (e.g., ./myscript.sh or bash myscript.sh)
+     Execution Environment: When you directly run a script, a new subshell process is created to execute the script.
+     Impact: Any changes made by the script are confined to this new subshell. Once the script finishes, the subshell is closed, and any modifications (like variable assignments or cd commands) are lost and do not affect the parent shell from which the script was launched.
+     Use Case: This is the standard way to execute standalone scripts that perform specific tasks and whose effects are not intended to persist in the interactive shell.
 
 ### 0919
 
@@ -209,6 +219,15 @@ echo "$#"
 
 # see the current process ID
 echo "$$"
+
+# stores the number of command line arguments (count, not the list)
+$#
+
+# stores only the first command line argument
+$1
+
+# is the built-in variable that stores a list of all the command line arguments passed to the script or function.
+$@
 ```
 
 - `;` is a command seperator in bash script. For example, you can chain command with ;
