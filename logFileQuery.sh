@@ -17,7 +17,7 @@ esac
 TARGET_DIR=${1}
 PERSON=${2}
 MONTH=${3}
-OUTPUT_DIR="myQueryResults"
+OUTPUT_DIR="queryResults"
 
 echo "=====$PERSON: PERSORM SEARCH FOR $TARGET_DIR, $MONTH====="
 
