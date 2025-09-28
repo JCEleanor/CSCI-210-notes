@@ -27,15 +27,24 @@ mkdir -p myQueryResults
 # In other words, any file that contains the "dd/yyyy" pattern in any line 
 # will be marked as a non-corrupt log file and processed as specified below.
 # You can assume the years of the log files will be between 2010-2024.
-VALID_DATE_PATTERN="[0-3][0-9]/20(1[0-9]|2[0-4])"
+YEAR_PATTERN="20(1[0-9]|2[0-4])"
+VALID_DATE_PATTERN="[0-3][0-9]/$YEAR_PATTERN"
 
 grep -r -h -E $VALID_DATE_PATTERN "$TARGET_DIR" \
   | grep "$PERSON" \
   | grep "$MONTH" \
   | while read -r LINE; do
     if [[ "$LINE" == *"$PERSON"* ]]; then
-        echo "$LINE"
-        # TODO: save it into the output dir
+        # grep year
+        YEAR=$(echo "$LINE" | grep -o -E "$YEAR_PATTERN")
+        
+        # create output file if not exists
+        OUTPUT_FILE="myQueryResults/${PERSON}_${MONTH}_${YEAR}.log"
+        # append line to output file
+        # FIXME: a new line in the last output when running 
+        # diff myQueryResults/Jeremy_Jan_2022.log ExampleInputsOutputs/test01_out/queryResults/Jeremy_Jan_2022.log
+        echo "$LINE" >> "$OUTPUT_FILE"
+        
     fi
 done
 
