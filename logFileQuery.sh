@@ -1,5 +1,4 @@
-# There is a single log file for every month and you will identify them by looking for the "dd/yyyy" pattern in the files. 
-# In other words, any file that contains the "dd/yyyy" pattern in any line will be marked as a non-corrupt log file and processed as specified below.
+#!/bin/bash
 
 if [ "$#" -ne 3 ]; then
   echo "Invalid Argument: logFileQuery.sh <target dir> <person> <month>"
@@ -18,11 +17,16 @@ esac
 TARGET_DIR=${1}
 PERSON=${2}
 MONTH=${3}
+OUTPUT_DIR="myQueryResults"
 
-echo "$PERSON: PERSORM SEARCH FOR $TARGET_DIR, $MONTH"
+echo "=====$PERSON: PERSORM SEARCH FOR $TARGET_DIR, $MONTH====="
 
-# rm -rf queryResults
-mkdir -p myQueryResults
+if ([[ -d $OUTPUT_DIR ]]); then
+    rm -rf $OUTPUT_DIR
+    echo "=====reset old "$OUTPUT_DIR" directory====="
+fi
+
+mkdir -p $OUTPUT_DIR
 
 # In other words, any file that contains the "dd/yyyy" pattern in any line 
 # will be marked as a non-corrupt log file and processed as specified below.
@@ -39,37 +43,22 @@ grep -r -h -E $VALID_DATE_PATTERN "$TARGET_DIR" \
         YEAR=$(echo "$LINE" | grep -o -E "$YEAR_PATTERN")
         
         # create output file if not exists
-        OUTPUT_FILE="myQueryResults/${PERSON}_${MONTH}_${YEAR}.log"
+        OUTPUT_FILE="${OUTPUT_DIR}/${PERSON}_${MONTH}_${YEAR}.log"
+
         # append line to output file
-        # FIXME: a new line in the last output when running 
-        # diff myQueryResults/Jeremy_Jan_2022.log ExampleInputsOutputs/test01_out/queryResults/Jeremy_Jan_2022.log
         echo "$LINE" >> "$OUTPUT_FILE"
-        
     fi
 done
 
-# TODO: error handling: invalid month or operation not permitted error
+# remove the last new line in each output file
+for file in ${OUTPUT_DIR}/*; do
+    if [[ -f "$file" && -s "$file" ]]; then
+        # TODO: check if we're actually removing a new line not an output :目
+        if tail -c1 "$file" | grep '^$'; then
+            truncate -s -1 "$file"
+            echo "Removed trailing newline from: $file"
+        fi
+    fi
+done
 
-# The script should:
-# Locate and identify the valid log files within the given target directory structure.
-        # if the file contains the "dd/yyyy" pattern in any line
-
-
-
-# Create a new directory named queryResults in the same directory where the script is run
-# Create a separate log result file for each year in the queryResults directory with the following format:
-# <personName>_<Mon>_<yyyy>.log
-
-# should print the following error messages when:
-
-# the number of provided parameters is not exactly three.
-# Usage: ./logFileQuery.sh <target dir> <person> <month>
-# The third parameter, i.e., the month, is not one of Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec.
-# Invalid month
-
-# Output
-# Your script should create a directory named queryResults and create a separate file for each year that has a log file 
-# that matches the given name and the month. 
-# NOTE: If the input corrupted log directory does not contain any valid log files 
-# or no valid log file matches the given name or the month, you should just create an empty queryResults directory. 
-# Below is an example output directory with the log files created:
+# diff -s myQueryResults/Jeremy_Jan_2022.log ExampleInputsOutputs/test01_out/queryResults/Jeremy_Jan_2022.log
