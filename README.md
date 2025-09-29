@@ -292,3 +292,12 @@ Also show inode number (uuid)
 ```
 
 - `ls -lahid` list as directory
+
+### 0929
+
+- to kill a process, you have to own the processes. For example, only super user can kill the root process :(
+- `^c` (hitting ctrl c) asynchronous operation (can be customized)
+- `^z` close program processes (make it sleep). fg means waking the process up`(same as`kill -TSTP`)
+- by running `./infinite.c &`, parent processes do not wait for the child process too finish
+- `kill -9 {process-id}` can kill the process
+- SIGSEGV is a signal sent to a process, indicating a segmentation fault or an illegal memory access. But you can kill a process by sending this error to stop it. i.e., `kill -SEGV <PID>`
