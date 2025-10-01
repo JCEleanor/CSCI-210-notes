@@ -301,3 +301,25 @@ Also show inode number (uuid)
 - by running `./infinite.c &`, parent processes do not wait for the child process too finish
 - `kill -9 {process-id}` can kill the process
 - SIGSEGV is a signal sent to a process, indicating a segmentation fault or an illegal memory access. But you can kill a process by sending this error to stop it. i.e., `kill -SEGV <PID>`
+
+- 1001 (C programming (yeah))
+- kernal (core part of the os) of isengard is written in C
+- `man 2 pipe` an entire page on system calls
+- In C programming, the concept of "slot space" typically refers to how memory is allocated and utilized, especially when dealing with data structures like arrays or when considering the memory footprint of variables and function calls
+
+- imperative vs declarative programming
+- ex: https://www.shadertoy.com/view/lllSWr
+- sidenote: `man man` check how to use man command to fnid certain section of manual
+
+```
+     The sections of the manual are:
+           1.   General Commands Manual
+           2.   System Calls Manual
+           3.   Library Functions Manual
+           4.   Kernel Interfaces Manual
+           5.   File Formats Manual
+           6.   Games Manual
+           7.   Miscellaneous Information Manual
+           8.   System Manager's Manual
+           9.   Kernel Developer's Manual
+```
