@@ -323,3 +323,7 @@ Also show inode number (uuid)
            8.   System Manager's Manual
            9.   Kernel Developer's Manual
 ```
+
+- `readelf` and `ldd` to see object files in details (only on isengard)
+- cd `/u/pa/nb/tolgacan/210/fall25` to check the c code
+- initialize gloabl variabl `int array[1000000] = {1,2,3,451004};`
