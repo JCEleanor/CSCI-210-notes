@@ -1,4 +1,10 @@
-[0827]
+### general
+
+- cd `/u/pa/nb/tolgacan/210/fall25` to check the code
+- scp jingchun_chiu@isengard:/u/pa/nb/tolgacan/210/fall25/{some-file} .
+
+### 0827
+
 Intro to linux
 what’s a operating system? it’s a program (or a collection of programs) the orchestrated/managed the softwares processes in our pc. what does it manage? cpu, memory, threads, processes (the main thing) etc…
 written in C
@@ -325,5 +331,8 @@ Also show inode number (uuid)
 ```
 
 - `readelf` and `ldd` to see object files in details (only on isengard)
-- cd `/u/pa/nb/tolgacan/210/fall25` to check the c code
 - initialize gloabl variabl `int array[1000000] = {1,2,3,451004};`
+
+### 1006
+
+- bit operation. (prob don't have to master it) some common algo: fenwick tree
