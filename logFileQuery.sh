@@ -39,9 +39,11 @@ grep -r -h -E $VALID_DATE_PATTERN "$TARGET_DIR" \
   | grep "$MONTH" \
   | while read -r LINE; do
     if [[ "$LINE" == *"$PERSON"* ]]; then
-        # grep year
-        YEAR=$(echo "$LINE" | grep -o -E "$YEAR_PATTERN")
+        # grep year, only the first match. To precent catching 2016 in "192.168.3.237 -- Phil [Mar/08/2022:23:54:47 -0700] 'Command' 269 20168042"
+        YEAR=$(echo "$LINE" | grep -o -E -m 1 "$YEAR_PATTERN" | head -1)
         
+        echo "$LINE" | grep -o -E -m 1 "$YEAR_PATTERN"
+        echo "----"
         # create output file if not exists
         OUTPUT_FILE="${OUTPUT_DIR}/${PERSON}_${MONTH}_${YEAR}.log"
 
