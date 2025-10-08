@@ -336,3 +336,12 @@ Also show inode number (uuid)
 ### 1006
 
 - bit operation. (prob don't have to master it) some common algo: fenwick tree
+
+### 1008
+
+- There are 10 types of people: people who don't know binary representation, people who know binary representation, and people who knows there's more number repersentation than two binary representation
+- sign + exponent + fraction
+- https://www.h-schmidt.net/FloatConverter/IEEE754.html
+- binary representation: 1.125: exponent: 01111111 0001 (follow by 20 0s)
+- 01111111 = 127 (in base ten)
+- representing 0: all zero, but the signed bit can be 0 or 1
