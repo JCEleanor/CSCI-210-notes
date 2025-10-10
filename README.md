@@ -345,3 +345,13 @@ Also show inode number (uuid)
 - binary representation: 1.125: exponent: 01111111 0001 (follow by 20 0s)
 - 01111111 = 127 (in base ten)
 - representing 0: all zero, but the signed bit can be 0 or 1
+- if you want to strore very large number, don't use float, use `long long int`
+
+### 1010
+
+- midterm will include floating point representation and two's compliment
+- gcc -g -o outfile sourcefile.c
+- clang something.c
+- midterm will cover up to Static/Dynamic Linking with Libraries (week 7)
+
+- an anglorithm (not so smart) in the linker progress. The linker just keeps trackining what's defined in the object file 
