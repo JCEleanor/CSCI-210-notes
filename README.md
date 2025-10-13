@@ -354,4 +354,61 @@ Also show inode number (uuid)
 - clang something.c
 - midterm will cover up to Static/Dynamic Linking with Libraries (week 7)
 
-- an anglorithm (not so smart) in the linker progress. The linker just keeps trackining what's defined in the object file 
+- an anglorithm (not so smart) in the linker progress. The linker just keeps trackining what's defined in the object file
+
+#### Midterm:
+
+```
+The exam is going to include the following topics:
+
+Linux acces: ssh, scp
+
+Absolute, relative paths, navigation, file/dir manipulation commands: pwd, cd, ls, mkdir, rmdir, touch, rm, mv, cp
+
+File access rights, chmod
+
+Globbing
+
+I/O redirection, piping, text processing commands: echo, cat, head, tail, sort, tee, uniq, tr, wc
+
+grep
+
+aliasing, variables, environment variables
+
+Quoting (double, single quotes), command substitution (single parentheses), command line arguments, built-in variables in bash ($#, $@, etc)
+
+if statements, for loops, while loops, the "test" command, i.e., "[ ]'
+
+Process management: ps, kill, pkill, background and foreground processes
+
+The Linux File System, inodes, symbolic links, hard links
+
+C data types: char, signed/unsigned integers (two's complement), IEEE floating point representation
+
+Static, dynamic linking.
+
+For bash commands, you are only responsible from the command options that are mentioned on the slides.
+
+The exam is going to be on paper and will be a multiple choice exam (similar to the sample midterm on Canvas) .
+```
+
+### 1013
+
+What's inside an object file (in simple table):
+
+```
+jingchun_chiu@pct-isengard:/u/pa/nb/tolgacan/210/fall25$ readelf -s symbols.o
+
+Symbol table '.symtab' contains 8 entries:
+   Num:    Value          Size Type    Bind   Vis      Ndx Name
+     0: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT  UND
+     1: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS symbols.c
+     2: 0000000000000000     0 SECTION LOCAL  DEFAULT    1 .text
+     3: 0000000000000000     0 SECTION LOCAL  DEFAULT    5 .rodata
+     4: 0000000000000000    36 FUNC    GLOBAL DEFAULT    1 foo
+     5: 0000000000000000     4 OBJECT  GLOBAL DEFAULT    3 incr
+     6: 0000000000000024    63 FUNC    GLOBAL DEFAULT    1 main
+     7: 0000000000000000     0 NOTYPE  GLOBAL DEFAULT  UND printf
+```
+
+- how does gcc know where to include all the dependencies? (they are the files after the compiler option `-l`) (the order of linking matters)
