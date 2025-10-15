@@ -30,6 +30,7 @@ head -n 5 WEEK3.md | tail -2
 - if no file is provided, it reads from standard input (stdin)
 - sort order: Special characters, numbers, letters (lowercase before uppercase of same
   letter)
+- `-k`: sort by columns
 
 ### `tee`
 

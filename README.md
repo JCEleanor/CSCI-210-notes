@@ -386,6 +386,7 @@ The Linux File System, inodes, symbolic links, hard links
 C data types: char, signed/unsigned integers (two's complement), IEEE floating point representation
 
 Static, dynamic linking.
+lib naming convention
 
 For bash commands, you are only responsible from the command options that are mentioned on the slides.
 
@@ -412,3 +413,13 @@ Symbol table '.symtab' contains 8 entries:
 ```
 
 - how does gcc know where to include all the dependencies? (they are the files after the compiler option `-l`) (the order of linking matters)
+
+### 1015
+
+```
+jingchun_chiu@pct-isengard:/u/pa/nb/tolgacan/210/fall25$ ldd main
+        linux-vdso.so.1 (0x00007e91b081b000)
+        libmath.so => not found
+        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007e91b0400000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007e91b081d000)
+```
