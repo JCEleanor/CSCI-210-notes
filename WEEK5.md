@@ -23,10 +23,67 @@ Is a collection of data blocks, on a storage device, containing the data of inte
 | dir1     | 45455455 |
    
 ## File system organization: symbolic and hard links
-
-When listed inside a directory, the l flag at the very first column of a long
+### Symbolic links
+- When listed inside a directory, the l flag at the very first column of a long
 format listing identifies them as links.
+- deleting the target file does not remove the symbolic links pointing to that file
+- create symbolic link using `ln -s [target file] [link name]`
+- also called <i>soft</i> links
 
+### Hard links
+- They are independent entries in the same or different directory strucures that point to the **same inode**. In other words, they are aliases to the same single file
+- The system keeps track of number of hard links to a file, so that the data blcks are deleted from the disk onl after the last remaining link to that inode is deleted
+- creare hard links `ln [target file] [hard link name]`
+
+## The superuser
+- administers the OS
+- is not affected by file permission (can move, delete any file that belongs to anyone
+- used to be called root user
+- Today, instead of logging as the root user each time, regular users can be given superuser privileges by listing them in a special file named: **sudoers**
+- using the **`sudo`** command to execute a command as the superuser is recommended.
+
+### `sudo`
+`sudo [OPTION] [CMD]`
+super user do 
+
+- on Ubuntu, Debiam and Kali Linux, `apt` is the main package manager
+    - `sudo apt-get update`
+    - `sudo apt-get install [package_name]`
+
+### User management
+- `who`: prints info about all users who are currently logged in
+- `w`: similar to `who` but prints more info
+- `id [USERNAME`: print the user and group info for the specified [USERNAME]
+- Users can be added using the `useradd` command and can be removed using the `userdel` command
 
 ## Querying and manipulating processes
+
+- **A process is a running copy of a program along with its allocated resources such, memory, file handles, network sockets, etc.**
+- there can be multiple different processes of a program
+        - example: vim is a program installed on isengard. When different users edit their own files simultaneously, there will be multiple and separate vim processes with their own process ids, memory footprints, etc.
+- processes are dynamic, i.e., there are various events in their lifetimes: created, paused, run, killed and completed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
