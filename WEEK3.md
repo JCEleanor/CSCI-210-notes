@@ -80,6 +80,9 @@ count the number of lines, words, bytes or character in file
 - `-v` return lines which do not match pattern
 - `-o` print only the matching parts on separate lines
 - `-R` read the files in directories, recursively
+- `-E`: to interpret the search pattern as an Extended Regular Expression (ERE).
+
+  The primary difference is how special characters (metacharacters) are handled. In Extended Regular Expressions (ERE), characters like `?, +, |, (),` and `{}` are treated as special characters by default. In Basic Regular Expressions (BRE), they are treated as literal characters unless you escape them with a backslash (\).
 
 #### REGEX
 
@@ -121,3 +124,20 @@ count the number of lines, words, bytes or character in file
 - Two regular expressions may be joined by ‘|’. Either of the two
   expressions, which are called alternatives, are matched
 - **Repetition > Concatenation > Alternation**: Repetition takes precedence over concatenation, which in turn takes precedence over alternation. (see [notes](./regex-notes.md))
+- if the first character of the list is the caret `^`, then it matches any character **not** in the list.
+  - `[0123456789]` matches any single digit
+  - `[^()]` matches any single character that is not opening or closing parenthesis
+- special characters lose their special meaning inside bracket expressions.
+
+- The ‘\’ character, when followed by certain ordinary characters, takes a
+  special meaning:
+  - anchors:
+    - `\b` matches the empty string at the edge of a word. For example: To find the word "cat" but not "caterpillar" or "tomcat", you would use \bcat\b
+    - `\B` matches the empty string provided it's not at the edge of a word (used less frequently)
+
+#### `grep` example
+
+- `grep ^alias .bashrc`: find lines in your .bashrc that starts with `alias`
+- `grep -n ^$ *.c`: find empty lines in all the c files in the current directory and report their line number
+- `grep '\bse[et]\b' .bashrc`: find occurrences of `see` or `set`
+- `grep -o -n -E '(0|[1-9][0-9]*)([eE][+-]?[0-9]+)?'`: find integers (likely scientific notation) and print integers only with line numbers
