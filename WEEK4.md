@@ -125,4 +125,106 @@ echo "All args: $*"
 
 ## Test command
 
+- a successful test, i.e., true, has exit
+  status 0.
+
+```bash
+#!/bin/bash
+if [ $1 -le 10 ]; then
+  echo "Enter a number larger than 10"
+fi
+```
+
+```bash
+#!/bin/bash
+if  $1 -le 10; then
+  echo "Enter a number larger than 10"
+fi
+```
+
+### test on files
+
+- `[-e file]`: true if file exists
+- `[-d file]`: true if file exists, and it's a dir
+- `[-r file]`: true if file exists, and it's readable
+- `[-s file]`: true if file exists, and its size is greater than 0
+- `[file1 -nt file2]`: true if file1 exists, and it's newer than file2
+
+### test on strings
+
+- `[ s1 = s2 ]`: true if strings are the same
+- `[ s1 != s2 ]`: true if strings are not the same
+- `[ -n string ]`: true if strings **is not** empty
+- `[ -z string ]`: true if strings **is** empty
+- `[ s1 < s2 ]`: true if s1 comes before s2 based on the binary value of their characters
+
+### test on integers
+
+- `[ n1 -eq n2 ]`: true if integers are equal
+- `[ n1 -ne n2 ]`: true if integers are not equal
+- `[ n1 -gt n2 ]`: true if n1 is greater than n2
+- `[ n1 -ge n2 ]`: true if n1 is greater than or equal to n2
+- `[ n1 -lt n2 ]`: true if n1 is less than n2
+- `[ n1 -ln n2 ]`: true if n1 is less than or equal to n2
+
+### logical operators
+
+- `[ ! expression ]`: true if the expession is false
+- `[ e1 -a e2 ]`: logical **AND** operator.
+- `[ e1 -o e2 ]`: logical **OR** operator.
+- `( expression )`: true if expression is true.
+
+  - `( expression )`: (Subshell)
+
+  ```bash
+   Example:
+   1 # The 'cd' command only affects the subshell
+   2 echo "Current directory: $(pwd)"
+   3 (cd /tmp && echo "Inside subshell: $(pwd)")
+   4 echo "Back in original directory: $(pwd)"
+  Output:
+
+   1 Current directory: /Users/Eleanor/Desktop/CSM/CSCI210-system-programming-c
+   2 Inside subshell: /tmp
+   3 Back in original directory: /Users/Eleanor/Desktop/CSM/CSCI210-system-programming-c
+  ```
+
 ## bash programming constructs: conditionals loops
+
+```bash
+#!/bin/bash
+echo -n "Please enter a while number: "
+read VAR
+echo Your number is $VAR
+if [ $VAR -gt 100 ]; then
+  echo "It's greater than 100"
+elif [ $VAR -lt 100 ]; then
+  echo "It's less than 100"
+else
+  echo "It's exactly 100"
+fi
+```
+
+### for loop
+
+```bash
+for VAR in {1..10..2}
+do
+  echo $VAR
+done
+```
+
+```bash
+for FILE in $(ls *.txt)
+do
+  echo $FILE
+done
+```
+
+```bash
+# c-style for loop
+for (( i=1; i<10; i+=2))
+do
+  echo $i
+done
+```
