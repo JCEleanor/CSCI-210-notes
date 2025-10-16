@@ -1,6 +1,6 @@
 ### general
 
-- cd `/u/pa/nb/tolgacan/210/fall25` to check the code
+- cd /u/pa/nb/tolgacan/210/fall25 to check the code
 - scp jingchun_chiu@isengard:/u/pa/nb/tolgacan/210/fall25/{some-file} .
 
 ### 0827
