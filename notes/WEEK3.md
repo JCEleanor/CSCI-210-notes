@@ -74,6 +74,8 @@ count the number of lines, words, bytes or character in file
 
 ## `grep`
 
+Search for pattern in each file and print matched lines
+
 - `-i` ignore case
 - `-c` return toal match count (**of lines**) instead of line contents
 - `-l` return the **names of matches files**, instead of line content

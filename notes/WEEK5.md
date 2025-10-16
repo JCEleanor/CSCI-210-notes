@@ -1,4 +1,4 @@
-## File system organization: inode
+## File system organization: file + inode + directory structure
 
 A well formed file system is composed of three main components:
 
@@ -7,6 +7,8 @@ A well formed file system is composed of three main components:
 Is a collection of data blocks, on a storage device, containing the data of interest
 
 ### 2. **inode**: a structure assigned to eah file to store its metadata
+
+Inodes do not contain the filename. Instead, inodes contain metadata about a file (like permissions, timestamps, size, and pointers to data blocks), but the filename itself is stored in the directory entry that points to that inode.
 
 - **Each file has an inode to store its metadata and locate the files's content**
 - inodes are stored in a table, which is allocated when the filesystem is first created, which means there are fixed numbers of inodes in a file system.
@@ -29,7 +31,7 @@ Is a collection of data blocks, on a storage device, containing the data of inte
 
 ### Symbolic links
 
-- When listed inside a directory, the l flag at the very first column of a long
+- When listed inside a directory, the `l` flag at the very first column of a long
   format listing identifies them as links.
 - deleting the target file does not remove the symbolic links pointing to that file
 - create symbolic link using `ln -s [target file] [link name]`
@@ -38,7 +40,7 @@ Is a collection of data blocks, on a storage device, containing the data of inte
 ### Hard links
 
 - They are independent entries in the same or different directory strucures that point to the **same inode**. In other words, they are aliases to the same single file
-- The system keeps track of number of hard links to a file, so that the data blcks are deleted from the disk onl after the last remaining link to that inode is deleted
+- The system keeps track of number of hard links to a file, so that the data blcks are deleted from the disk only after the last remaining link to that inode is deleted
 - creare hard links `ln [target file] [hard link name]`
 
 ## The superuser

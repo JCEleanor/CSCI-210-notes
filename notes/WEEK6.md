@@ -102,4 +102,19 @@ The IEEE 754 Single-Precision Floating-Point standard is the most common way com
 
 [A detailed explanation can be found here](./IEEE-floating-point-standards.md)
 
+**\*Take home message: Floating point arithmetic is not associative** The order of operation matters!
+
+```c
+float a = 3.14;
+float b = 1e20;
+printf("(3.14 + 1e20) - 1e20 = %g\n", (a + b) - b); // prints 0
+printf("3.14 + (1e20 - 1e20) = %g\n", a + (b - b)); // prints 3.14
+```
+
+#### Summary
+
+- Floats have an extremely wide range, but cannot represent every number in that range
+- Some approximation and rounding errors may occur. (don't use floats for money)
+- Associativity does not hold for numbers far apart in the range
+- Equality comparison operations are often unwise
 - float vs double

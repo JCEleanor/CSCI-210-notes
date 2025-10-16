@@ -53,19 +53,40 @@ The fraction (also known as the mantissa or significand) holds the significant d
 
 ---
 
-### Special Cases
+### Representing Special Values
 
-The reserved exponent values (all 0s and all 1s) are used to handle numbers and results that are not ordinary.
+The IEEE 754 standard reserves specific patterns in the exponent field to represent values that are not ordinary numbers.
 
-#### When Exponent = 00000000 (all zeros)
+#### 1. Representing Zero
 
-*   If **Fraction is 0**: The value is **Zero**. The sign bit determines whether it is `+0` or `-0`.
-*   If **Fraction is non-zero**: These are **denormalized (or subnormal) numbers**. They represent very small values close to zero. They do not use the "hidden bit," which allows for "gradual underflow"—a graceful loss of precision as numbers approach zero, rather than an abrupt drop.
+A value is interpreted as zero when the exponent and fraction fields are both all zeros. The sign bit can be either 0 or 1, which leads to two distinct representations of zero: `+0` and `-0`.
 
-#### When Exponent = 11111111 (all ones)
+*   **Exponent:** `00000000`
+*   **Fraction:** `00000000000000000000000`
+*   **Sign Bit:** `0` for `+0`, `1` for `-0`.
 
-*   If **Fraction is 0**: The value is **Infinity** (`+∞` or `-∞`), determined by the sign bit. This is the result of operations like `1 / 0` or when a number exceeds the format's representable range (overflow).
-*   If **Fraction is non-zero**: The value is **NaN (Not a Number)**. This indicates the result of an invalid mathematical operation, such as `0 / 0` or `sqrt(-1)`.
+#### 2. Representing Very Small (Denormalized) Numbers
+
+To represent numbers that are smaller than the smallest possible "normal" number, the standard uses a format called **denormalized** (or **subnormal**) numbers. This allows for "gradual underflow," where precision is lost gracefully as a number approaches zero.
+
+A number is denormalized if:
+*   **Exponent:** `00000000`
+*   **Fraction:** Any non-zero value.
+
+In this case, the "hidden bit" is assumed to be `0` (not `1`), and the exponent is fixed at the lowest possible value (-126). The formula becomes:
+**Value = (-1)^Sign * (0.Fraction) * 2^(-126)**
+
+#### 3. Representing Exceptional Values (Infinity and NaN)
+
+Exceptional values are used for results of operations that overflow the representable range or are mathematically undefined. This is handled when the exponent field is all ones.
+
+*   **Exponent:** `11111111`
+
+There are two sub-cases:
+
+*   **Infinity:** If the **fraction field is all zeros**, the value represents **infinity**. This occurs during overflow or division by zero. The sign bit determines whether it is positive infinity (`+∞`) or negative infinity (`-∞`).
+
+*   **NaN (Not a Number):** If the **fraction field is any non-zero value**, the value is **NaN**. This is the result of mathematically invalid operations, such as `0/0` or the square root of a negative number.
 
 ### Example: Representing -12.75
 

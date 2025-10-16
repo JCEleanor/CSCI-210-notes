@@ -66,9 +66,11 @@ SSH is a network protocol that gives users, particularly system admin a secure w
 
 #### ls
 
-`-a` Include directory entries whose names begin with a dot (‘.’).
+`-a` Include directory entries whose names begin with a dot (‘.’). (list hidden files)
 
 `-l` List files in the <u>long format</u>, as described in the <u>The Long Format</u> subsection below. Will show file permission in the first col as 10-character string.
+
+`-i` to get the inode number information of files/directories
 
 ```
 ❯ ls -l
