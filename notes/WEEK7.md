@@ -151,3 +151,4 @@ gcc is a "compiler driver": it launches a series of sub-programs
 - `-L`: to specify locations (directories) for library files
 - `-l`: to specify the libraries to link with
 - `-I`: to specify the locations (directories) for header files
+- `-c` option stops the compilation process before linking.
