@@ -152,3 +152,17 @@ gcc is a "compiler driver": it launches a series of sub-programs
 - `-l`: to specify the libraries to link with
 - `-I`: to specify the locations (directories) for header files
 - `-c` option stops the compilation process before linking.
+
+- `readelf -s file.o`: print the symbol table of a compiled object file
+
+## Library naming convention
+
+```
+gcc -g -o prog -static prog.c -L/libdir -lalgorithm
+```
+
+When you use `-lNAME`, the linker searches for a file named:
+
+- `libNAME.a` (for static libraries, which is what -static requires)
+- `libNAME.so` (for shared libraries)
+
