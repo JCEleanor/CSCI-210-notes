@@ -2,6 +2,7 @@
 
 - cd /u/pa/nb/tolgacan/210/fall25 to check the code
 - scp jingchun_chiu@isengard:/u/pa/nb/tolgacan/210/fall25/{some-file} .
+- `ls -lat` to list and sort by modified date
 
 ### 0827
 
