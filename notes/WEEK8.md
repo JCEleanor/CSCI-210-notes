@@ -6,3 +6,5 @@ void *p;
 // perform arithmatic on pointer (add datatype) so we need to know what datatype p is
 (int)p+1
 ```
+
+- character pointer
