@@ -1,0 +1,14 @@
+# Compiled executable files
+*.out
+*.exe
+outfile
+
+# Object files
+*.o
+
+# Log files
+*.log
+
+# macOS specific
+.DS_Store
+*.dSYM/
