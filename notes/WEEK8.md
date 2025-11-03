@@ -24,6 +24,19 @@ ptrdiff_t diff = p1 - p2; // diff will be 3
 
 ### Function pointers
 
+we can pass functoins as parameters, store functions in variables, etc.
+`float (*p) (int, int) a;` where `float (*p) (int, int)` is a **type**
+
+```c
+// reduce.c
+int main(){
+    int a[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    int (*reduceFunction)(int, int) ; // how you use function pointer
+    reduceFunction = sum;
+    printf("reduce value = %d", reduce(a, 10, reduceFunction));
+}
+```
+
 p+1 is not necessary the next byte in memory
 
 ```c
