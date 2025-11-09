@@ -2,8 +2,18 @@
 #include <string.h>
 #include <stdlib.h>
 
+void change(char *str)
+{
+	str[2] = 'a';
+}
+
 int main()
 {
+	char s[10] = "Trip";
+	change(s);
+	printf("%s\n", s);
+	return 0;
+
 	char mystr1[] = "Hello World!"; // char mystr[] = {'H','e','l'.......'!','\0'}
 
 	char mystr2[5] = "abcde"; // not enough space for null terminator
