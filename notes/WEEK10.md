@@ -56,3 +56,10 @@ Alternatve for `fork()` / `exec()`. We'll use this command in project 3.
 ### Data versus Processes
 
 file descriptors: stdin 0, stdout 1, stderr 2
+
+### Standard I/O descriptors
+
+Open files or other I/O channels are named within the process by an integer file descriptor value
+
+The main takeaway of process slides:
+**data is abstracted and everthing is files**
