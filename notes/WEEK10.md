@@ -61,6 +61,9 @@ int main() {
 
 we'll focus more on processs creation.
 
+- `chdir()`
+  This system call is used to change the current working directory of the calling process.
+
 #### Zombie process
 
 A zombie process is a process which has executed but still has a record in the process table for the parent process to collect.
