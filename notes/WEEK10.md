@@ -18,8 +18,41 @@ A mechinism allows user mode process to enter the kernel mode to execute kernel 
 
 #### `fork`
 
-- `fork()` takes no arguments.
-- what does `fork()` return if it's successful? **child's process id to the parent and 0 to the child process**
+A system call used to create a new process.
+
+`fork()` takes no arguments.
+
+What it does:
+
+1. create a child process
+2. duplicate resources: The child process gets a copy of the parent's data, including file descriptors. Both the parent and child have access to the same pipe ends (read/write) immediately after the fork.
+3. Returns Different Values: It **returns 0 to the newly created child process** and **returns the child's Process ID (PID) to the parent process**. This allows the code to distinguish which process is running and execute different logic
+
+```c
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/type.h>
+
+int main(){
+  pid_t pid;
+  // copy the process that is currently running the code
+  pid = fork();
+  if (pid < 0){
+    fprintf("Fork failed\n");
+    return 1;
+  }
+  else if (pid == 0){
+    printf("I am the Child process. (PID: %d)\n", getpid());
+    // what gets copied from the Parent into the Child
+    // 1. the code: the child will have the exact same C code
+    // 2. The variables: child gets every variable and its current value
+    // 3. The current position: The child doesn't start from main() at the top. It starts life at the exact same line where fork() was called.
+  }
+  else{
+    printf("2. I am the Parent process. (PID: %d, Child PID: %d)\n", getpid(), pid);
+  }
+}
+```
 
 ### Basic Process Coordination
 

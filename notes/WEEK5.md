@@ -95,7 +95,7 @@ For some programs that may run for hours, you may want to keep it running in the
 Every process is created by a parent process
 
 1. the parent process uses the `fork` system call to create a clone of itself
-   - when `for()` is successful, it returns:
+   - when `fork()` is successful, it returns:
      1. child PID is returned to the parent
      2. 0 is returned to the child
    - when `fork()` fails, no child process is created and -1 is returned to the parent
